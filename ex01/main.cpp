@@ -2,13 +2,13 @@
 
 int main( void )
 {
-    ScavTrap ash( "Ash" );
-    ScavTrap ash2( ash );
+    ClapTrap clap("Carlos");
+    ScavTrap clap2("Patrick");
+    ClapTrap clap3("Bob");
 
-    ash.attack( "the air" );
-    ash.takeDamage( 10 );
-    ash.beRepaired( 10 );
-    ash.guardGate();
-
+    clap.attack("Patrick");
+    clap2.guardGate();
+    clap2.beRepaired(1);
+    clap2.takeDamage(1);
     return 0;
 }
