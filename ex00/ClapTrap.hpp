@@ -19,7 +19,7 @@ public:
     ~ClapTrap();
 
     ClapTrap(const ClapTrap &);
-    ClapTrap &operator=(const ClapTrap &rhs);
+    ClapTrap &operator=(const ClapTrap &copy);
     void attack(std::string const &target);
     void takeDamage(unsigned int amount);
     void beRepaired(unsigned int amount);

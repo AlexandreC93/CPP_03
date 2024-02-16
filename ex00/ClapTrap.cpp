@@ -11,18 +11,18 @@ ClapTrap::~ClapTrap(void)
     return;
 }
 
-ClapTrap::ClapTrap(const ClapTrap &rhs)
+ClapTrap::ClapTrap(const ClapTrap &copy)
 {
-    *this = rhs;
+    *this = copy;
     std::cout << "ClapTrap copy constructor called" << std::endl;
     return;
 }
 
-ClapTrap&   ClapTrap::operator=( const ClapTrap& rhs ) {
-    this->m_name = rhs.m_name;
-    this->m_hitPoints = rhs.m_hitPoints;
-    this->m_energyPoints = rhs.m_energyPoints;
-    this->m_attackDamage = rhs.m_attackDamage;
+ClapTrap&   ClapTrap::operator=( const ClapTrap& copy ) {
+    this->m_name = copy.m_name;
+    this->m_hitPoints = copy.m_hitPoints;
+    this->m_energyPoints = copy.m_energyPoints;
+    this->m_attackDamage = copy.m_attackDamage;
     return *this;
 }
 

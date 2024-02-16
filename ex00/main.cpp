@@ -2,10 +2,9 @@
 
 int main( void )
 {
-    ClapTrap clap("Ash");
+    ClapTrap clap("Carlos");
+    ClapTrap clap2("Bot");
 
-    clap.attack("Staff");
-
-
+    clap.attack("Bot");
     return 0;
 }

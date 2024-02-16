@@ -1,35 +1,30 @@
-NAME		= fragtrap
+NAME		= Trap
 	
 CC			= c++
-FLAGS		= -Wall -Wextra -Werror -std=c++98
+FLAGS		= -Wall -Wextra -Werror
 RM			= rm -rf
 
-OBJDIR = obj
+OBJDIR = .obj
 
-FILES		= main ClapTrap ScavTrap FragTrap
+FILES		= ClapTrap FragTrap ScavTrap main
 
 SRC			= $(FILES:=.cpp)
 OBJ			= $(addprefix $(OBJDIR)/, $(FILES:=.o))
 HEADER		= ClapTrap.hpp ScavTrap.hpp FragTrap.hpp
 
-ifeq ($(DEBUG), 1)
-   OPTS = -g
-endif
-
-
 all: $(NAME)
 
 $(NAME): $(OBJ) $(HEADER)
-	@$(CC) $(OBJ) $(OPTS) -o $(NAME)
+	@$(CC) $(OBJ) -o $(NAME)
 	@printf "Exec ready\n"
 
 $(OBJDIR)/%.o: %.cpp $(HEADER)
 	@mkdir -p $(dir $@)
-	@$(CC) $(FLAGS) $(OPTS) -c $< -o $@
+	@$(CC) $(FLAGS) -c $< -o $@
 
 clean:
 	@$(RM) $(OBJDIR) $(OBJ)
-	@printf "Object files removed\n"
+	@printf "Objs removed\n"
 
 fclean: clean
 	@$(RM) $(NAME)

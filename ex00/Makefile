@@ -1,32 +1,35 @@
-NAME	= exec
+NAME		= Trap
 	
-CC		= c++
-FLAGS	= -Wall -Wextra -Werror -std=c++98
-RM		= rm -rf
+CC			= c++
+FLAGS		= -Wall -Wextra -Werror
+RM			= rm -rf
 
-#Colors:
-GREEN		=	\e[92;5;118m
-YELLOW		=	\e[93;5;226m
-GRAY		=	\e[33;2;37m
-RESET		=	\e[0m
-CURSIVE		=	\e[33;3m
+OBJDIR = .obj
 
+FILES		= ClapTrap main
+
+SRC			= $(FILES:=.cpp)
+OBJ			= $(addprefix $(OBJDIR)/, $(FILES:=.o))
+HEADER		= ClapTrap.hpp
 
 all: $(NAME)
 
-$(NAME): 
-	@printf "$(GRAY)-Compiling $(NAME)...\n"
-	@ $(CC) $(FLAGS) main.cpp ClapTrap.cpp -o $(NAME)
-	@printf "Executable ready.\n"
+$(NAME): $(OBJ) $(HEADER)
+	@$(CC) $(OBJ) -o $(NAME)
+	@printf "Exec ready\n"
+
+$(OBJDIR)/%.o: %.cpp $(HEADER)
+	@mkdir -p $(dir $@)
+	@$(CC) $(FLAGS) -c $< -o $@
 
 clean:
+	@$(RM) $(OBJDIR) $(OBJ)
+	@printf "Objs removed\n"
+
+fclean: clean
 	@$(RM) $(NAME)
-	@printf "Executable removed.\n"
+	@printf "Exec removed\n"
 
-fclean:
-	@$(RM) $(NAME)
-	@printf "Executable removed.\n"
+re: fclean all
 
-re: clean all
-
-.PHONY: all clean re
+.PHONY: all clean fclean re
